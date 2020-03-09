@@ -1,4 +1,4 @@
-import { GraphQLObjectType } from "graphql";
+const { GraphQLObjectType, GraphQLID, GraphQLString } = require('graphql');
 
 const noteType = new GraphQLObjectType({
     name: 'Note',
@@ -7,3 +7,5 @@ const noteType = new GraphQLObjectType({
         content: { type: GraphQLString }
     }
 });
+
+module.exports = { noteType };

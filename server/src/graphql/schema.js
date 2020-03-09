@@ -1,4 +1,10 @@
-import { GraphQLObjectType, GraphQLSchema } from "graphql";
+const { GraphQLSchema, GraphQLObjectType } = require('graphql');
+const { NotesQuery } = require('./query/NotesQuery');
+const {
+    CreateNoteMutation,
+    UpdateNoteMutation,
+    DeleteNoteMutation
+} = require('./mutation/NotesMutation');
 
 const QueryType = new GraphQLObjectType({
     name: 'Query',
@@ -12,8 +18,10 @@ const MutationType = new GraphQLObjectType({
     fields: () => ({
         createNote: CreateNoteMutation,
         deleteNote: DeleteNoteMutation,
-        updateNote: UpdateNoteMutaion
+        updateNote: UpdateNoteMutation
     })
 });
 
 const schema = new GraphQLSchema({ query: QueryType, mutation: MutationType });
+
+module.exports = schema;
